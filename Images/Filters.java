@@ -290,9 +290,7 @@ public class Filters
                 double input = image.getPixel(x,y).getValue();          //input
                 double calc = ((2*input)/255)-1;                        //x
                 double sign = Math.signum(calc);                        //signum(x)
-                double absCalc = 0;                                     //y=|x|
-                if(sign>0)  {absCalc =   calc;}                         //y=|x|
-                else        {absCalc = - calc;}                         //y=|x|
+                double absCalc = Math.signum(calc)*calc;                //y=|x|                         //y=|x|
                 double calc3 = Math.pow(absCalc,p);                     //y'=y^p
                 double calc4 = sign*calc3;                              //x'=signum(x)y'
                 int finalCalc = (int) (((calc4+1)/2)*255);              //input'
